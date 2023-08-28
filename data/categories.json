@@ -1,34 +1,35 @@
 [
     {
         "id": "0",
-        "name": "All News"
+        "name": "সকল খবর"
     },
     {
         "id": "1",
-        "name": "Breaking News"
+        "name": "সর্বশেষ খবর"
     },
     {
         "id": "2",
-        "name": "Regular News"
+        "name": "রাজনীতি"
     },
     {
         "id": "3",
-        "name": "International News"
+        "name": "বিশ্ব"
     },
     {
         "id": "4",
-        "name": "Sports"
+        "name": "খেলা"
     },
     {
         "id": "5",
-        "name": "Entertainment"
+        "name": "বিনোদন"
     },
     {
         "id": "6",
-        "name": "Culture"
+        "name": "শিল্প-সাহিত্য"
     },
     {
         "id": "7",
-        "name": "Arts"
+        "name": "মতামত"
     }
 ]
+
