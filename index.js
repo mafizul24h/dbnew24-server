@@ -67,10 +67,31 @@ async function run() {
             res.send(ruselt);
         });
 
-        app.delete('/news/:id', async(req, res) => {
+        app.put('/news/:id', async (req, res) => {
             const id = req.params.id;
             // console.log(id);
-            const query = { _id: new ObjectId(id)};
+            const filter = { _id: new ObjectId(id) };
+            const news = req.body;
+            // console.log(news);
+            const options = { upsert: true };
+            const updateNews = {
+                $set: {
+                    title: news.title, 
+                    category: news.category, 
+                    reporter: news.reporter, 
+                    publish_date: news.publish_date, 
+                    photo: news.photo, 
+                    details: news.details, 
+                }
+            }
+            const result = await newsCollection.updateOne(filter, updateNews, options);
+            res.send(result)
+        })
+
+        app.delete('/news/:id', async (req, res) => {
+            const id = req.params.id;
+            // console.log(id);
+            const query = { _id: new ObjectId(id) };
             const result = await newsCollection.deleteOne(query);
             res.send(result);
         })
