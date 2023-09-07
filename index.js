@@ -50,18 +50,30 @@ async function run() {
             res.send(result);
         })
 
-        app.get('/categories/:id', async (req, res) => {
+        // app.get('/categories/:id', async (req, res) => {
+        //     const categoryId = req.params.id;
+        //     console.log(categoryId);
+        //     const query = { id: categoryId };
+        //     const result = await categoriesCollection.findOne(query);
+        //     res.send(result)
+        //     // console.log(result);
+        // })
+
+        app.get('/categories/:id', async(req, res) => {
             const categoryId = req.params.id;
-            console.log(categoryId);
-            const query = { id: categoryId };
-            const result = await categoriesCollection.findOne(query);
-            res.send(result)
-            // console.log(result);
+
+            if(categoryId == '0') {
+                const result = await newsCollection.find({}).toArray();
+                return res.send(result);
+            }
+            const result = await newsCollection.find({category: categoryId}).toArray();
+            res.send(result);
         })
 
         app.post('/news', async (req, res) => {
             const news = req.body;
             // console.log(news);
+            news.createdAt = new Date();
             const ruselt = await newsCollection.insertOne(news);
             // console.log(result);
             res.send(ruselt);
