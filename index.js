@@ -64,10 +64,12 @@ async function run() {
 
             if(categoryId == '0') {
                 const result = await newsCollection.find({}).toArray();
-                return res.send(result);
+                const reversedResult = result.reverse();
+                return res.send(reversedResult);
             }
             const result = await newsCollection.find({category: categoryId}).toArray();
-            res.send(result);
+            const reversedResult = result.reverse();
+            res.send(reversedResult);
         })
 
         app.post('/news', async (req, res) => {
